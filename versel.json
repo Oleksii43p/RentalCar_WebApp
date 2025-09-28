@@ -1,4 +1,22 @@
 {
+  "build": {
+    "env": {
+      "VITE_BASE_URL": "/"
+    }
+  },
+  "routes": [
+    {
+      "src": "/_next/static/(.*)",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
+    },
+    {
+      "src": "/.*",
+      "dest": "/index.html"
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
