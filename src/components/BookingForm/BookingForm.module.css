@@ -1,0 +1,215 @@
+.reservationForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  background-color: var(--color-surface-white);
+  border-radius: 10px;
+  border: 1px solid var(--color-border-light);
+  max-width: 640px;
+}
+
+.formHeaderBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mainTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--color-primary-dark);
+}
+
+.captionText {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--color-text-subtle);
+}
+
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dateFieldLabel {
+  display: block;
+  width: 100%;
+  height: 52px;
+  border-radius: 12px;
+  background-color: var(--color-input-field);
+}
+
+.textField {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--color-input-field);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--color-primary-dark);
+  height: 52px;
+  width: 100%;
+  outline: none;
+  font-family: var(--font-family-body);
+}
+
+.textField::placeholder {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--color-text-subtle);
+}
+
+.commentField {
+  padding: 12px 20px;
+  min-height: 120px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--color-input-field);
+  font-family: var(--font-family-body);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--color-primary-dark);
+  resize: none;
+  outline: none;
+}
+
+.submitButton {
+  padding: 12px 51px;
+  background-color: var(--color-action-main);
+  color: var(--color-surface-white);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  border: none;
+  border-radius: var(--radius-sharp);
+  transition: background-color 0.3s linear;
+  width: 156px;
+  height: 44px;
+  margin: 0 auto;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: var(--color-action-active);
+}
+
+.submitButton:disabled {
+  background-color: var(--color-text-subtle);
+  cursor: not-allowed;
+}
+
+/* --- УНІКАЛЬНІ ГЛОБАЛЬНІ СТИЛІ ДЛЯ REACT-DATEPICKER --- */
+
+:global(.react-datepicker) {
+  border: 2px solid var(--color-action-main); /* Товстіша межа */
+  border-radius: 8px; /* Менший радіус */
+  overflow: hidden;
+  background-color: var(--color-surface-white);
+  font-family: var(--font-family-body); /* Inter */
+}
+
+:global(.react-datepicker__header) {
+  background-color: var(--color-surface-white);
+  border-bottom: 1px solid var(--color-border-light);
+  padding: 14px; /* Унікальний відступ */
+}
+
+:global(.react-datepicker__current-month) {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--color-primary-dark);
+}
+
+:global(.react-datepicker__navigation) {
+  top: 10px; /* Унікальна позиція */
+}
+
+:global(.react-datepicker__navigation-icon::before) {
+  border-color: var(--color-action-main);
+  border-width: 2px 2px 0 0;
+  width: 10px;
+  height: 10px;
+}
+
+:global(.react-datepicker__navigation:hover .react-datepicker__navigation-icon::before) {
+  border-color: var(--color-action-active);
+}
+
+:global(.react-datepicker__day-names) {
+  display: flex;
+  justify-content: space-around;
+  gap: 0;
+  padding-bottom: 8px; /* Унікальний відступ */
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+:global(.react-datepicker__day-name) {
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.2;
+  color: var(--color-text-subtle);
+  width: 32px;
+}
+
+:global(.react-datepicker__month) {
+  padding: 8px;
+  margin: 4px;
+}
+
+:global(.react-datepicker__week) {
+  display: flex;
+  gap: 4px;
+}
+
+:global(.react-datepicker__day) {
+  width: 32px;
+  height: 32px;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--color-primary-dark);
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+}
+
+:global(.react-datepicker__month .react-datepicker__week .react-datepicker__day:hover) {
+  background-color: #f0f8ff; /* Унікальний світло-блакитний hover */
+  border-radius: 50%;
+  color: var(--color-primary-dark);
+}
+
+:global(.react-datepicker__day--selected),
+:global(.react-datepicker__day--keyboard-selected) {
+  background: var(--color-action-main);
+  color: var(--color-surface-white);
+}
+
+:global(.react-datepicker__day--today) {
+  box-shadow: inset 0 0 0 2px var(--color-action-main);
+}
+
+:global(.react-datepicker__day--outside-month) {
+  color: var(--color-border-light);
+}
+
+:global(.react-datepicker__day--disabled) {
+  color: var(--color-text-subtle);
+  pointer-events: none;
+  background: transparent;
+}
+
+:global(.react-datepicker-popper) {
+  z-index: 10;
+}
+
+:global(.react-datepicker-popper[data-placement^='bottom'] .react-datepicker__triangle),
+:global(.react-datepicker-popper[data-placement^='top'] .react-datepicker__triangle) {
+  stroke: var(--color-action-main);
+  fill: var(--color-surface-white);
+}

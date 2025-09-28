@@ -1,0 +1,47 @@
+.mainAppHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 120px;
+  background-color: var(--color-surface-soft);
+}
+
+.logoLinkWrapper {
+  /* Обгортка для посилання на логотипі */
+  display: block;
+}
+
+.appLogo {
+  width: 104px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.mainNavigation {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.navItem {
+  /* .navLink */
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--main);
+  text-decoration: none;
+  transition: color 0.3s linear;
+}
+
+.navItem:hover {
+  color: var(--color-action-main);
+}
+
+.navItemActive {
+  text-decoration: none;
+  color: var(--color-action-active);
+}
+
+.navItemActive:hover {
+  /* Зберігаємо колір при наведенні для активного посилання */
+  color: var(--color-action-active);
+}

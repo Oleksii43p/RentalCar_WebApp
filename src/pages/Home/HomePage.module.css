@@ -1,0 +1,53 @@
+.heroBannerSection {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url('../../assets/Car.png');
+
+  background-size: cover;
+  background-position: center;
+  padding: 436px 329px 60px 328px;
+  color: var(--color-surface-white);
+  text-align: center;
+  height: calc(100vh - 68px);
+}
+
+/* Стили для ретина-дисплеїв */
+@media (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .heroBannerSection {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+      url('../../assets/Car@2x.png');
+  }
+}
+
+.heroTitle {
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.heroSubtitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  margin-bottom: 40px;
+}
+
+.ctaButton {
+  border-radius: 12px;
+  padding: 12px 88px;
+  width: 276px;
+  height: 44px;
+  color: var(--color-surface-white);
+  background-color: var(--color-action-main);
+  transition: background-color 0.3s linear;
+  font-family: var(----font-family-header);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  border: none;
+  cursor: pointer;
+}
+
+.ctaButton:hover {
+  background-color: var(--color-action-active);
+}

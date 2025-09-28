@@ -37,7 +37,8 @@ export interface BookingData {
   startDate: string;
   endDate: string;
   customerName: string;
-  customerPhone: string;
+  customerEmail: string;
+  comment: string;
 }
 
 // Тип відповіді про бронювання

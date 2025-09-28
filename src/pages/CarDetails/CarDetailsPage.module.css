@@ -1,0 +1,176 @@
+.detailPageWrapper {
+  /* Стилі для всієї сторінки */
+  padding: 84px 120px 104px 120px;
+  height: 100%;
+}
+
+.infoAndBookingGrid {
+  /* Задаємо основну сітку 1fr 1fr */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px; /* Унікальний відступ */
+}
+
+.leftContentBlock {
+  /* Ліва частина: Зображення + Форма */
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.mainImageWrapper {
+  /* Обгортка зображення */
+  width: 640px;
+  height: 512px;
+  border-radius: 19px;
+  overflow: hidden;
+}
+
+.carImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rightContentBlock {
+  /* Права частина: Деталі + Характеристики */
+  display: flex;
+  flex-direction: column;
+  gap: 68px;
+}
+
+/* --- БЛОК 1: ОСНОВНІ ДЕТАЛІ (title, address, price, description) --- */
+
+.mainCarDetails {
+  /* Просто обгортка для структури */
+  display: flex;
+  flex-direction: column;
+}
+
+.titleAndPriceWrap {
+  /* .titleWrap */
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.carMainTitle {
+  /* .title */
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  color: var(--main);
+}
+
+.carIdDisplay {
+  /* .carId */
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--gray);
+}
+
+.locationAndMileageWrap {
+  /* .adressMileageWrap */
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+
+.mapPinIcon {
+  /* .mapMarker */
+  stroke: var(--main);
+  stroke-width: 30;
+  margin-right: 6px;
+  width: 12px;
+  height: 15px;
+  overflow: visible;
+}
+
+.carLocation,
+.carMileageInfo {
+  /* .carAdress, .carMileage */
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--main);
+  display: flex;
+  align-items: center;
+}
+
+.dailyRentalRate {
+  /* .carRentalPrice */
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #3470ff;
+  margin-bottom: 32px;
+}
+
+.carFullDescription {
+  /* .carDescription */
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--main);
+}
+
+/* --- БЛОК 2: ХАРАКТЕРИСТИКИ ТА УМОВИ --- */
+
+.carFeaturesBlock {
+  /* .carInfo */
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+}
+
+.featureGroupWrap {
+  /* .carInfoWrap */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.groupTitle {
+  /* .carInfoTitle */
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--main);
+}
+
+.featureList {
+  /* .carInfoList */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.featureItem {
+  /* .carInfoItem */
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--main);
+}
+
+.accessoriesAndFunctions {
+  /* Обгортка для 2 колонок списків аксесуарів/функцій */
+  display: flex;
+  gap: 15px;
+  flex-direction: column; /* Відступ між колонками */
+}
+
+/* Стилі для іконок */
+.featureIcon,
+.featureCheckIcon {
+  /* .Calendar4Week, .CarFront, .FuelPump, .SlSettings, .BsCheckCircle */
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  flex-shrink: 0; /* Щоб іконки не стискалися */
+}

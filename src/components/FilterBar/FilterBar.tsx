@@ -1,32 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { useCarStore } from "../../store/useCarStore";
-import { fetchBrands } from "../../api/carsApi";
-import { cleanNumberInput } from "../../utils/formatters";
-import styles from "./FilterBar.module.css";
+import React, { useState, useEffect } from 'react';
+import { useCarStore } from '../../store/useCarStore';
+import { fetchBrands } from '../../api/carsApi';
+import { cleanNumberInput } from '../../utils/formatters';
+import styles from './FilterBar.module.css';
 
 // Список цін для меню, що випадає (відповідно до API, де price - рядок)
-const PRICE_OPTIONS = [
-  "30",
-  "40",
-  "50",
-  "60",
-  "70",
-  "80",
-  "90",
-  "100",
-  "150",
-  "200",
-];
+const PRICE_OPTIONS = ['30', '40', '50', '60', '70', '80', '90', '100', '150', '200'];
 
 const FilterBar: React.FC = () => {
   const { filters, setFilters, fetchInitialCars } = useCarStore();
 
   // Локальний стан даних в інпутах/селектах
   const [localFilters, setLocalFilters] = useState({
-    brand: filters.brand || "",
-    rentalPrice: filters.rentalPrice || "",
-    mileageFrom: "",
-    mileageTo: "",
+    brand: filters.brand || '',
+    rentalPrice: filters.rentalPrice || '',
+    mileageFrom: '',
+    mileageTo: '',
   });
 
   const [brands, setBrands] = useState<string[]>([]);
@@ -39,7 +28,7 @@ const FilterBar: React.FC = () => {
         const brandList = await fetchBrands();
         setBrands(brandList);
       } catch (error) {
-        console.error("Не удалось загрузить бренды:", error);
+        console.error('Неможливо завантажити бренди:', error);
       } finally {
         setIsLoadingBrands(false);
       }
@@ -48,9 +37,7 @@ const FilterBar: React.FC = () => {
   }, []);
 
   // 2. Обробник зміни полів форми
-  const handleChange = (
-    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     const { name, value } = e.target;
     setLocalFilters((prev) => ({ ...prev, [name]: value }));
   };
@@ -64,12 +51,8 @@ const FilterBar: React.FC = () => {
       brand: localFilters.brand,
       rentalPrice: localFilters.rentalPrice,
       // API вимагає minMileage/maxMileage (без пропусків)
-      minMileage: localFilters.mileageFrom
-        ? cleanNumberInput(localFilters.mileageFrom)
-        : undefined,
-      maxMileage: localFilters.mileageTo
-        ? cleanNumberInput(localFilters.mileageTo)
-        : undefined,
+      minMileage: localFilters.mileageFrom ? cleanNumberInput(localFilters.mileageFrom) : undefined,
+      maxMileage: localFilters.mileageTo ? cleanNumberInput(localFilters.mileageTo) : undefined,
     };
 
     // Залишаємо лише ті поля, які мають значення (для чистоти запиту)
@@ -83,15 +66,18 @@ const FilterBar: React.FC = () => {
   };
 
   return (
-    <form className={styles.filterForm} onSubmit={handleSubmit}>
-      <div className={styles.filterGroup}>
-        <label htmlFor="brand">Car Brand</label>
+    <form className={styles.filterControlsForm} onSubmit={handleSubmit}>
+      <div className={styles.filterFieldGroup}>
+        <label htmlFor="brand" className={styles.filterLabel}>
+          Car Brand
+        </label>
         <select
           id="brand"
           name="brand"
           value={localFilters.brand}
           onChange={handleChange}
           disabled={isLoadingBrands}
+          className={styles.selectInputControl}
         >
           <option value="">All Brands</option>
           {brands.map((brand) => (
@@ -102,13 +88,16 @@ const FilterBar: React.FC = () => {
         </select>
       </div>
 
-      <div className={styles.filterGroup}>
-        <label htmlFor="rentalPrice">Price / 1 hour</label>
+      <div className={styles.filterFieldGroup}>
+        <label htmlFor="rentalPrice" className={styles.filterLabel}>
+          Price / 1 hour
+        </label>
         <select
           id="rentalPrice"
           name="rentalPrice"
           value={localFilters.rentalPrice}
           onChange={handleChange}
+          className={styles.selectInputControl}
         >
           <option value="">All Prices</option>
           {PRICE_OPTIONS.map((price) => (
@@ -119,9 +108,11 @@ const FilterBar: React.FC = () => {
         </select>
       </div>
 
-      <div className={styles.filterGroup}>
-        <label htmlFor="mileageFrom">Car mileage / km</label>
-        <div className={styles.mileageInputs}>
+      <div className={styles.filterFieldGroup}>
+        <label htmlFor="mileageFrom" className={styles.filterLabel}>
+          Car mileage / km
+        </label>
+        <div className={styles.mileageInputWrapper}>
           <input
             type="text"
             id="mileageFrom"
@@ -129,6 +120,7 @@ const FilterBar: React.FC = () => {
             placeholder="From"
             value={localFilters.mileageFrom}
             onChange={handleChange}
+            className={styles.mileageInputField}
           />
           <input
             type="text"
@@ -137,11 +129,12 @@ const FilterBar: React.FC = () => {
             placeholder="To"
             value={localFilters.mileageTo}
             onChange={handleChange}
+            className={styles.mileageInputField}
           />
         </div>
       </div>
 
-      <button type="submit" className={styles.searchBtn}>
+      <button type="submit" className={styles.searchSubmitButton}>
         Search
       </button>
     </form>
