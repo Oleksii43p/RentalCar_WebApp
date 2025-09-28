@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { lazy, Suspense } from "react";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Header from "./components/common/Header/Header";
+import Loader from "./components/common/Loader/Loader";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+// Лініве завантаження сторінок для оптимізації
+const HomePage = lazy(() => import("./pages/Home/HomePage"));
+const CatalogPage = lazy(() => import("./pages/Catalog/CatalogPage"));
+const FavoritesPage = lazy(() => import("./pages/Favorites/FavoritesPage"));
+const CarDetailsPage = lazy(() => import("./pages/CarDetails/CarDetailsPage"));
 
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <BrowserRouter>
+      <Header />
+      <main>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/catalog" element={<CatalogPage />} />
+            <Route path="/catalog/:carId" element={<CarDetailsPage />} />
+            <Route path="/favorites" element={<FavoritesPage />} />
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </Suspense>
+      </main>
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;
