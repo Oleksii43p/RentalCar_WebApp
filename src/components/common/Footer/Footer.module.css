@@ -8,6 +8,9 @@
   border-top: 1px solid #ddd;
   flex-direction: column;
   gap: 15px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .wrap {

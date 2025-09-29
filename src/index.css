@@ -36,6 +36,7 @@ body {
   background-color: var(--color-surface-white);
   min-height: 100vh;
   overflow-x: hidden;
+  padding-bottom: 88px;
 }
 
 h1,
