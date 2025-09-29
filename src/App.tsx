@@ -10,6 +10,7 @@ const HomePage = lazy(() => import('./pages/Home/HomePage'));
 const CatalogPage = lazy(() => import('./pages/Catalog/CatalogPage'));
 const FavoritesPage = lazy(() => import('./pages/Favorites/FavoritesPage'));
 const CarDetailsPage = lazy(() => import('./pages/CarDetails/CarDetailsPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFound/NotFound'));
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/catalog/:carId" element={<CarDetailsPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="*" element={<HomePage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </main>
