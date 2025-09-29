@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/common/Header/Header';
+import Footer from './components/common/Footer/Footer';
 import Loader from './components/common/Loader/Loader';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,6 +30,7 @@ const App = () => {
         </Suspense>
       </main>
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
+      <Footer />
     </div>
   );
 };
